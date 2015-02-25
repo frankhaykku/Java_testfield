@@ -84,15 +84,14 @@ public class Game {
         {
             ++tries;
 
-            System.out.print(this.phrasesGuess.get((int)((Math.random() * 10)/phrasesGuess.size())));
             int myNumber = Integer.parseInt(reader.readLine());
             int guess = isMyNumber(myNumber);
 
             if(((triesCount + 1) - tries)!= 0)
                 if(guess > 0)
-                    System.out.println(this.phrasesLarger.get((int) ((Math.random() * 10) / phrasesLarger.size())) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
+                    System.out.println(this.phrasesLarger.get((int) ((Math.random() * phrasesLarger.size()))) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
                 else if(guess < 0)
-                    System.out.println(this.phrasesSmaller.get((int) ((Math.random() * 10) / phrasesSmaller.size())) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
+                    System.out.println(this.phrasesSmaller.get((int) ((Math.random() * phrasesSmaller.size()))) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
                 else
                     isGuessed = true;
 
@@ -119,4 +118,32 @@ public class Game {
     }
 
     public int getRandom() { return random; }
+
+    public void addCustomPhrases(String text, int group)
+    {
+        switch(group)
+        {
+            case -1:
+            {
+                if(text != null)
+                    this.phrasesSmaller.add(text);
+
+                break;
+            }
+            case 0:
+            {
+                if(text != null)
+                    this.phrasesGuess.add(text);
+
+                break;
+            }
+            case 1:
+            {
+                if(text != null)
+                    this.phrasesLarger.add(text);
+
+                break;
+            }
+        }
+    }
 }
