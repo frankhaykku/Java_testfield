@@ -9,14 +9,15 @@ import java.util.ArrayList;
  * Created by golubnichij_sa on 25.02.15.
  */
 public class Game {
-    private int tries;
-    private int triesCount;
-    private int range = 10;
+    private int tries;                                              /* Номер текущей попытки */
+    private int triesCount;                                         /* Общее количество попыток */
+    private int range = 10;                                         /* Диапозон чисел, которые использует компьютер для выбора числа */
     private int random;
-    private ArrayList<String> phrasesGuess = new ArrayList<String>();
-    private ArrayList<String> phrasesLarger = new ArrayList<String>();
-    private ArrayList<String> phrasesSmaller = new ArrayList<String>();
+    private ArrayList<String> phrasesGuess = new ArrayList<String>();    /* Набор фраз, если угадал число */
+    private ArrayList<String> phrasesLarger = new ArrayList<String>();   /* Набор фраз, если число больше */
+    private ArrayList<String> phrasesSmaller = new ArrayList<String>();  /* Набор фраз, если число меньше */
 
+    /* Конструктор для инициализации игры используя только один параметр count - количество попыток для угадывания числа */
     public Game(int count)
     {
         this.triesCount = count;
@@ -43,11 +44,15 @@ public class Game {
 
     }
 
+    /* Конструктор для инициализации игры из двух параметров count - количество попыток для угадывания числа,
+     * range - диапозон чисел, среди которых, компьютер выбирет число
+     */
     public Game(int count, int range)
     {
         this.triesCount = count;
         this.tries = 0;
 
+        /* Проверка, на то, чтобы диапозон был больше 10, иначе будем использовать диапозон числел от 0...9 */
         if(range > 10)
             this.range = range;
 
@@ -84,8 +89,8 @@ public class Game {
         {
             ++this.tries;
 
-            int myNumber = Integer.parseInt(reader.readLine());
-            int guess = isMyNumber(myNumber);
+            int myNumber = Integer.parseInt(reader.readLine()); // Считываем число пользователя
+            int guess = isMyNumber(myNumber);                   // Проверяем, угадал ли пользователь число
 
             if(((this.triesCount + 1) - this.tries)!= 0)
                 if(guess > 0)
@@ -107,6 +112,12 @@ public class Game {
         return true;
     }
 
+
+    /* Метод, для проверки числа пользователя и "загадоного" числа
+     * Возвращает 0, если число угадано.
+     * Возвращает -1, если число меньше загадоного
+     * Возвращает 1, если число больше загадоного
+     */
     public int isMyNumber(int number)
     {
         int guess = 0;
@@ -117,8 +128,10 @@ public class Game {
         return number < this.random ? 1 : -1;
     }
 
+    /* Метод для получения загадоного числа. В основном использовался для отладки */
     public int getRandom() { return this.random; }
 
+    /* Метод для добавления пользовательских фраз в наборы фраз */
     public void addCustomPhrases(String text, int group)
     {
         switch(group)
