@@ -103,7 +103,7 @@ public class Game {
         if(!isGuessed)
             System.out.println("Извини, но ты не угадал. Мое число было " + random);
         else
-            System.out.println("Хей, Амиго, ты выйграл! Ты смог угадать чило, которое я загадал! :)");
+            System.out.println("Хей, Амиго, ты выйграл! Ты смог угадать число, которое я загадал! :)");
 
         return true;
     }
