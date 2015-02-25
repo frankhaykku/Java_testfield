@@ -9,7 +9,7 @@ public class Solution {
     {
         Game game = new Game(3, 10);
 
-        game.addCustomPhrases("Ой, это число какое - то мелкое :( ...", -1);
+        game.addCustomPhrases("Ой, это число какое-то мелкое :( ...", -1);
         game.addCustomPhrases("Придумай что-нибудь поменьше, Амиго...", 1);
         game.addCustomPhrases("Молодец! Мне понравилось с тобой играть :)", 0);
 

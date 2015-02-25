@@ -9,19 +9,19 @@ import java.util.ArrayList;
  * Created by golubnichij_sa on 25.02.15.
  */
 public class Game {
-    private static int tries;
-    private static int triesCount;
-    private static int range = 10;
-    private static int random;
+    private int tries;
+    private int triesCount;
+    private int range = 10;
+    private int random;
     private ArrayList<String> phrasesGuess = new ArrayList<String>();
     private ArrayList<String> phrasesLarger = new ArrayList<String>();
     private ArrayList<String> phrasesSmaller = new ArrayList<String>();
 
     public Game(int count)
     {
-        triesCount = count;
-        tries = 0;
-        random = (int)(Math.random() * range);
+        this.triesCount = count;
+        this.tries = 0;
+        this.random = (int)(Math.random() * this.range);
 
         phrasesGuess.add("Амиго, ну давай, назови число: ");
         phrasesGuess.add("Ты ведь знаешь это число, и оно: ");
@@ -45,13 +45,13 @@ public class Game {
 
     public Game(int count, int range)
     {
-        triesCount = count;
-        tries = 0;
+        this.triesCount = count;
+        this.tries = 0;
 
         if(range > 10)
-            Game.range = range;
+            this.range = range;
 
-        random = (int)(Math.random() * range);
+        this.random = (int)(Math.random() * range);
 
         phrasesGuess.add("Амиго, ну давай, назови число: ");
         phrasesGuess.add("Ты ведь знаешь это число, и оно: ");
@@ -78,29 +78,29 @@ public class Game {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean isGuessed = false;
 
-        System.out.println("Привет, друг! Я загадал число от 0 до "+ range +", попробуй отгадать за " + triesCount + " попытки его!");
+        System.out.println("Привет, друг! Я загадал число от 0 до "+ this.range +", попробуй отгадать за " + this.triesCount + " попытки его!");
 
         while(!isGuessed)
         {
-            ++tries;
+            ++this.tries;
 
             int myNumber = Integer.parseInt(reader.readLine());
             int guess = isMyNumber(myNumber);
 
-            if(((triesCount + 1) - tries)!= 0)
+            if(((this.triesCount + 1) - this.tries)!= 0)
                 if(guess > 0)
-                    System.out.println(this.phrasesLarger.get((int) ((Math.random() * phrasesLarger.size()))) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
+                    System.out.println(this.phrasesLarger.get((int) ((Math.random() * this.phrasesLarger.size()))) + "... Не забывай, что у тебя осталось " + (this.triesCount - this.tries) + " попыток(и)!");
                 else if(guess < 0)
-                    System.out.println(this.phrasesSmaller.get((int) ((Math.random() * phrasesSmaller.size()))) + "... Не забывай, что у тебя осталось " + (triesCount - tries) + " попыток(и)!");
+                    System.out.println(this.phrasesSmaller.get((int) ((Math.random() * this.phrasesSmaller.size()))) + "... Не забывай, что у тебя осталось " + (this.triesCount - this.tries) + " попыток(и)!");
                 else
                     isGuessed = true;
 
-            if((triesCount - tries) == 0)
+            if((this.triesCount - this.tries) == 0)
                 break;
         }
 
         if(!isGuessed)
-            System.out.println("Извини, но ты не угадал. Мое число было " + random);
+            System.out.println("Извини, но ты не угадал. Мое число было " + this.random);
         else
             System.out.println("Хей, Амиго, ты выйграл! Ты смог угадать число, которое я загадал! :)");
 
@@ -111,13 +111,13 @@ public class Game {
     {
         int guess = 0;
 
-        if(random == number)
+        if(this.random == number)
             return guess;
 
-        return number < random ? 1 : -1;
+        return number < this.random ? 1 : -1;
     }
 
-    public int getRandom() { return random; }
+    public int getRandom() { return this.random; }
 
     public void addCustomPhrases(String text, int group)
     {
@@ -144,6 +144,7 @@ public class Game {
 
                 break;
             }
+            default : { break; }
         }
     }
 }
