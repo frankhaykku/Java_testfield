@@ -20,5 +20,5 @@ public enum SolarSystemPlanets {
     SolarSystemPlanets(String name) { this.name = name; }
 
     @Override
-    public String toString() { return "Мы живем на планете " + this.name + ". Ура!"; }
+    public String toString() { return "Мы живем на планете " + name + ". Ура!"; }
 }

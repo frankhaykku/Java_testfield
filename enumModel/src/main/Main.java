@@ -15,11 +15,11 @@ public class Main {
 
         Sex female = Sex.FEMALE;
         Sex male = Sex.MALE;
-        System.out.println(male);
-        System.out.println(female);
+        System.out.println("Пол: " + male);
+        System.out.println("Пол: " + female);
 
         SolarSystemPlanets earth = SolarSystemPlanets.EARTH;
-        System.out.println(earth.toString());
+        System.out.println(earth);
 
         String name = "URANUS";
         SolarSystemPlanets uranus = SolarSystemPlanets.valueOf(name);

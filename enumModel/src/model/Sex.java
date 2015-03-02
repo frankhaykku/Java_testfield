@@ -6,9 +6,9 @@ package model;
 
 public enum Sex {
     MALE{
-        public String toString() { return "Мужчина"; }
+        public String toString() { return "Мужской"; }
     },
     FEMALE {
-        public String toString() { return "Женщина"; }
+        public String toString() { return "Женский"; }
     };
 }

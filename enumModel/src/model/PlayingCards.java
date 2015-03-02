@@ -14,5 +14,5 @@ public enum PlayingCards {
 
     PlayingCards(String kind) { this.kind = kind; }
 
-    public String toString() { return "Масть вашей карты " + this.kind; }
+    public String toString() { return "Масть вашей карты " + kind; }
 }
