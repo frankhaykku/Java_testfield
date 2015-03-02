@@ -60,10 +60,93 @@ public class Resume {
 
         for(String lang : this.anotherLang)
                 langs += lang + " ";
-
+        langs.trim();
         return langs;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Resume node = (Resume)obj;
+        boolean isEqual = true;
+        int diff = 0;
+
+        if(!this.lastName.equals(node.lastName))
+            diff++;
+
+        if(!this.name.equals(node.name))
+            diff++;
+
+        if(!this.birthDate.equals(node.birthDate))
+            diff++;
+
+        if(this.sex != node.sex)
+            diff++;
+
+        if(!this.city.equals(node.city))
+            diff++;
+
+        if(!this.phoneNumber.equals(node.phoneNumber))
+            diff++;
+
+        if(!this.nationality.equals(node.nationality))
+            diff++;
+
+        if(this.crossOver != node.crossOver)
+            diff++;
+
+        if(this.educationLevel != node.educationLevel)
+            diff++;
+
+        if(!this.universityName.equals(node.universityName))
+            diff++;
+
+        if(!this.faculty.equals(node.faculty))
+            diff++;
+
+        if(!this.specialization.equals(node.specialization))
+            diff++;
+
+        if(this.year != node.year)
+            diff++;
+
+        if(!this.nativeLang.equals(node.nativeLang))
+            diff++;
+
+        if(!this.anotherLang.equals(node.anotherLang))
+            diff++;
+
+        if(this.exp != node.exp)
+            diff++;
+
+        if(diff > 0)
+            isEqual = false;
+
+        return isEqual;
+    }
+
+    @Override
+    public int hashCode() {
+        return  this.lastName.length() +
+                this.name.length() +
+                this.birthDate.get(Calendar.DAY_OF_WEEK) +
+                this.birthDate.get(Calendar.MONTH) +
+                this.birthDate.get(Calendar.YEAR) +
+                (this.sex ? 1 : 0) +
+                this.city.length() +
+                this.phoneNumber.length() +
+                this.nationality.length() +
+                (this.crossOver ? 1 : 0) +
+                this.educationLevel +
+                this.universityName.length() +
+                this.faculty.length() +
+                this.specialization.length() +
+                this.year +
+                this.nativeLang.length() +
+                this.anotherLang.size() +
+                (this.exp ? 1 : 0) * 17;
+    }
+
+    @Override
     public String toString() {
         return "Резюме по умолчанию: \n" +
                 "Фамилия: " + this.lastName +
